@@ -1,15 +1,16 @@
-package com.example.tedu
+package com.example.tedu.jokes
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.tedu.JokeDetailsActivity.Companion.createJokeDetailsIntent
+import com.example.tedu.Joke
+import com.example.tedu.jokeDetails.JokeDetailsActivity
 
 @Composable
 fun JokeItem(joke: Joke) {
@@ -19,8 +20,7 @@ fun JokeItem(joke: Joke) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                // Переход на экран деталей шутки
-                val intent = createJokeDetailsIntent(context, joke)
+                val intent = JokeDetailsActivity.createJokeDetailsIntent(context, joke)
                 context.startActivity(intent)
             }
             .padding(16.dp)
