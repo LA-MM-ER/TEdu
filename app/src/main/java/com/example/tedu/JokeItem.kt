@@ -16,7 +16,7 @@ fun JokeItem(joke: Joke, navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                navController.navigate("joke_details/${joke.category}/${joke.question}/${joke.answer}")
+                navController.navigate("joke_details/${joke.id}/${joke.category}/${joke.question}/${joke.answer}")
             }
             .padding(16.dp)
     ) {

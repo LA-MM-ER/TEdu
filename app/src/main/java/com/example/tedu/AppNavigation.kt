@@ -15,11 +15,16 @@ fun AppNavigation(jokesViewModel: JokesViewModel) {
         composable("jokes_list") {
             JokesScreen(jokesViewModel, navController)
         }
-        composable("joke_details/{category}/{question}/{answer}") { backStackEntry ->
+        composable("joke_details/{id}/{category}/{question}/{answer}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id") ?: "Unknown"
             val category = backStackEntry.arguments?.getString("category") ?: "Unknown"
             val question = backStackEntry.arguments?.getString("question") ?: "Unknown"
             val answer = backStackEntry.arguments?.getString("answer") ?: "Unknown"
-            JokeDetailsScreen(category, question, answer, navController)
+            JokeDetailsScreen(id, category, question, answer, navController)
+        }
+
+        composable("new_joke") {
+            NewJokeScreen(jokesViewModel, navController)
         }
     }
 }

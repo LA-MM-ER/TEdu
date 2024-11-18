@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun JokeDetailsScreen(category: String, question: String, answer: String, navController: NavController) {
+fun JokeDetailsScreen(id: String, category: String, question: String, answer: String, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -26,6 +26,14 @@ fun JokeDetailsScreen(category: String, question: String, answer: String, navCon
                 tint = MaterialTheme.colorScheme.primary
             )
         }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = "ID: $id",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.secondary
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -51,3 +59,4 @@ fun JokeDetailsScreen(category: String, question: String, answer: String, navCon
         )
     }
 }
+
