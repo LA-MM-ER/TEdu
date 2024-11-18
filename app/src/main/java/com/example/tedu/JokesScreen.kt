@@ -1,17 +1,17 @@
 package com.example.tedu
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 @Composable
-fun JokesScreen(jokes: List<Joke>) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize() //фикс черного прямоугольника внизу
-    ) {
-        items(jokes.size) { index ->
-            JokeItem(joke = jokes[index])
+fun JokesScreen(jokesViewModel: JokesViewModel, navController: NavController) {
+    val jokes = jokesViewModel.getJokesList()
+
+    Column(modifier = Modifier.fillMaxSize()) {
+        jokes.forEach { joke ->
+            JokeItem(joke = joke, navController = navController)
         }
     }
 }

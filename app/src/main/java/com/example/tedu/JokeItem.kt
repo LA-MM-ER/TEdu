@@ -6,22 +6,17 @@ import androidx.compose.material3.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.tedu.JokeDetailsActivity.Companion.createJokeDetailsIntent
+import androidx.navigation.NavController
 
 @Composable
-fun JokeItem(joke: Joke) {
-    val context = LocalContext.current
-
+fun JokeItem(joke: Joke, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                // Переход на экран деталей шутки
-                val intent = createJokeDetailsIntent(context, joke)
-                context.startActivity(intent)
+                navController.navigate("joke_details/${joke.category}/${joke.question}/${joke.answer}")
             }
             .padding(16.dp)
     ) {
