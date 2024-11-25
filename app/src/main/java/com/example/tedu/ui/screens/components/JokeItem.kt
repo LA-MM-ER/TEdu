@@ -1,4 +1,4 @@
-package com.example.tedu
+package com.example.tedu.ui.screens.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -6,9 +6,14 @@ import androidx.compose.material3.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.tedu.R
+import com.example.tedu.model.Joke
+import com.example.tedu.model.JokeSource
+import com.example.tedu.ui.navigation.navigateToJokeDetails
 
 @Composable
 fun JokeItem(joke: Joke, navController: NavController) {
@@ -16,7 +21,7 @@ fun JokeItem(joke: Joke, navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                navController.navigate("joke_details/${joke.id}/${joke.category}/${joke.question}/${joke.answer}")
+                navController.navigateToJokeDetails(joke)
             }
             .padding(16.dp)
     ) {
@@ -42,5 +47,17 @@ fun JokeItem(joke: Joke, navController: NavController) {
             overflow = TextOverflow.Ellipsis,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = when (joke.source) {
+                JokeSource.LOCAL -> stringResource(R.string.source_local)
+                JokeSource.NETWORK -> stringResource(R.string.source_network)
+            },
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.secondary
+        )
     }
 }
+

@@ -1,12 +1,15 @@
-package com.example.tedu
+package com.example.tedu.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.tedu.viewmodel.JokesViewModel
+import com.example.tedu.R
 
 @Composable
 fun NewJokeScreen(jokesViewModel: JokesViewModel, navController: NavController) {
@@ -25,21 +28,21 @@ fun NewJokeScreen(jokesViewModel: JokesViewModel, navController: NavController) 
             TextField(
                 value = category,
                 onValueChange = { category = it },
-                label = { Text("Категория") },
+                label = { Text(stringResource(R.string.joke_category)) },
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = question,
                 onValueChange = { question = it },
-                label = { Text("Вопрос") },
+                label = { Text(stringResource(R.string.joke_question)) },
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = answer,
                 onValueChange = { answer = it },
-                label = { Text("Ответ") },
+                label = { Text(stringResource(R.string.joke_answer)) },
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -48,13 +51,13 @@ fun NewJokeScreen(jokesViewModel: JokesViewModel, navController: NavController) 
         Button(
             onClick = {
                 jokesViewModel.addJoke(category, question, answer)
-                navController.popBackStack() // Navigate back to the main screen
+                navController.popBackStack()
             },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(16.dp)
         ) {
-            Text("Добавить шутку")
+            Text(stringResource(R.string.joke_add_button))
         }
     }
 }
