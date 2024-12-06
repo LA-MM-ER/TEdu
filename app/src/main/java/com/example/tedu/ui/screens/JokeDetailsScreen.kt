@@ -1,4 +1,4 @@
-package com.example.tedu
+package com.example.tedu.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
@@ -9,8 +9,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.tedu.R
 
 @Composable
 fun JokeDetailsScreen(id: String, category: String, question: String, answer: String, navController: NavController) {
@@ -30,7 +32,7 @@ fun JokeDetailsScreen(id: String, category: String, question: String, answer: St
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "ID: $id",
+            text = "${stringResource(R.string.joke_id)}: $id",
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.secondary
         )
@@ -38,7 +40,7 @@ fun JokeDetailsScreen(id: String, category: String, question: String, answer: St
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Категория: $category",
+            text = "${stringResource(R.string.joke_category)}: $category",
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -46,14 +48,14 @@ fun JokeDetailsScreen(id: String, category: String, question: String, answer: St
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Вопрос: $question",
+            text = "${stringResource(R.string.joke_question)}: $question",
             style = MaterialTheme.typography.bodyLarge
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Ответ: $answer",
+            text = "${stringResource(R.string.joke_answer)}: $answer",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )

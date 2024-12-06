@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TEdu</string>
+    <string name="joke_id">ID</string>
+    <string name="joke_category">Категория</string>
+    <string name="joke_question">Вопрос</string>
+    <string name="joke_answer">Ответ</string>
+    <string name="joke_add_button">Добавить шутку</string>
+    <string name="source_local">Источник: Локально</string>
+    <string name="source_network">Источник: Сеть</string>
 </resources>
